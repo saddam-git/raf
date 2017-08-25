@@ -1,0 +1,30 @@
+ {% extends parent_template|default:"tag/base_tag.html" %}
+
+
+
+
+{% block title %}
+<h2>{{profile.user.get_full_name|title}}'s Profile</h2>
+{% endblock %}
+
+
+{% block content %}
+ <h2>About {{profile.user.get_full_name}}</h2>
+ {{profile.about|default:"No Profile"|linebreaks}}
+
+{% endblock %}
+
+
+ {% block button %}
+ {% if user.pk == profile.user.pk %}
+  <ul>
+       <li><a href="{% url 'dj-auth:profile_update' %}">Profile update</a></li>
+      <li ><a href="{% url 'dj-auth:pw_change' %}">Change Password</a></li>
+      <li><a href="{% url 'dj-auth:disable' %}">Disable Account</a></li>
+  </ul>
+ {% endif %}
+
+
+ {% endblock %}
+
+

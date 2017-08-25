@@ -1,0 +1,39 @@
+ {% extends parent_template|default:"tag/base_tag.html" %}
+
+
+
+
+{% block title %}
+<h2>Tag Create</h2>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+{% if messages %}
+  <div class="alert alert-success" role="alert">
+    {% for message in messages %}
+      <button type="button" class="close" data-dismiss="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>&times;</button>{{ message }}
+    {% endfor %}
+  </div>
+
+{% endif %}
+
+ {% include 'user/logon_form.html' %}
+
+
+{% endblock %}
+
+
+ {% block button %}
+   <li><a href="{% url 'dj-auth:create' %}">Register New Account</a></li>
+   <li><a href="{% url 'dj-auth:pw_reset_start' %}"> Forgotten password?</a></li>
+
+
+ {% endblock %}
+
+
+
+

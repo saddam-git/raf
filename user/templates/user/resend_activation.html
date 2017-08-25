@@ -1,0 +1,29 @@
+ {% extends parent_template|default:"tag/base_tag.html" %}
+
+
+
+
+{% block title %}
+<h2>Resend Actvation mail</h2>
+{% endblock %}
+
+
+{% block content %}
+
+ <form
+ action="{% url 'dj-auth:resend_activation' %}"
+  method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+     <button type="submit">Resend Activation Email</button>
+  </form>
+
+
+{% endblock %}
+
+
+ {% block button %}
+
+
+
+ {% endblock %}

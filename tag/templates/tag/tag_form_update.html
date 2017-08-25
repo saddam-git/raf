@@ -1,0 +1,22 @@
+ {% extends parent_template|default:"tag/base_tag.html" %}
+
+
+
+
+{% block title %}
+<h2>Tag Update</h2>
+{% endblock %}
+
+
+{% block content %}
+
+  <form action="{{ tag.tag_update_url }}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button-primary" type="submit">Update Tag</button>
+      </form>
+
+
+{% endblock %}
+
+

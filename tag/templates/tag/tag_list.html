@@ -1,0 +1,67 @@
+{% extends parent_template|default:"tag/base_tag.html" %}
+
+{% block title %}
+<h2>Tag List</h2>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+
+{% if messages %}
+  <div class="alert alert-success" role="alert">
+    {% for message in messages %}
+      <button type="button" class="close" data-dismiss="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>&times;</button>{{ message }}
+    {% endfor %}
+  </div>
+
+{% endif %}
+
+    <ul>
+    {% for tag in tag_list %}
+    <li><a href="{{tag.get_absolute_url}}">{{tag.tag_name|title}}</a></li>
+      {% if perms.tag.change_tag %}
+     <a href="{{ tag.get_update_url }}" class="button">Edit</a>
+        {% endif %}
+        {% if perms.tag.delete_tag %}
+     <a href="{{ tag.get_delete_url }}" class="button">Delete</a>
+        {% endif %}
+    {% empty %}
+     <li><em>There are currently no Tags available.</em></li>
+    </ul>
+    {% endfor %}
+
+
+
+     {% if is_paginated %}
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}
+
+
+{% endblock %}
+
+
+{% block button %}
+    {% if perms.tag.add_tag %}
+    <a href="{% url 'tag_create' %}" class="button button-primary">Create New Tag</a>
+     {% endif %}
+{% endblock %}

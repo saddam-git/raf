@@ -1,0 +1,18 @@
+ {% extends parent_template|default:"tag/base_tag.html" %}
+
+
+
+
+{% block title %}
+<h2>Tag Create</h2>
+{% endblock %}
+
+
+{% block content %}
+
+ <p> You have successfully loged out</p>
+
+  {% include 'user/logon_form.html' with login_button='Log Back In' %}
+
+
+{% endblock %}

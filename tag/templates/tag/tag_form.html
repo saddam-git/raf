@@ -1,0 +1,22 @@
+ {% extends parent_template|default:"tag/base_tag.html" %}
+
+
+
+
+{% block title %}
+<h2>Tag Create</h2>
+{% endblock %}
+
+
+{% block content %}
+
+  <form action="{% url 'tag_create' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="button-primary" type="submit">Create Tag</button>
+  </form>
+
+
+{% endblock %}
+
+

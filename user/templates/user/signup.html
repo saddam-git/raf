@@ -1,0 +1,29 @@
+ {% extends parent_template|default:"tag/base_tag.html" %}
+
+
+
+
+{% block title %}
+<h2>Tag Create</h2>
+{% endblock %}
+
+
+{% block content %}
+
+ <form
+ action="{% url 'dj-auth:signup' %}"
+  method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+     <button type="submit">Signup</button>
+  </form>
+
+
+{% endblock %}
+
+
+ {% block button %}
+
+
+
+ {% endblock %}

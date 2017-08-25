@@ -1,0 +1,27 @@
+ {% extends parent_template|default:"tag/base_tag.html" %}
+
+
+
+
+{% block title %}
+<h2>Tag Create</h2>
+{% endblock %}
+
+
+{% block content %}
+
+<form action="{{ profile.get_update_url }}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+   <button type="submit">Update Profile</button>
+</form>
+{% endblock %}
+
+
+ {% block button %}
+
+ {% endblock %}
+
+
+
+
