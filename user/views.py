@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import View
 from django.template.response import TemplateResponse
-from raf import settings
+from raf.settings import dev
 
 ################## Signup ####################
 from django.contrib.auth import login, authenticate
@@ -29,7 +29,7 @@ from django.views.generic import DeleteView,View,DetailView,UpdateView
 
 
 class DisableAccount(View):
-    success_url = settings.LOGIN_REDIRECT_URL
+    success_url = dev.LOGIN_REDIRECT_URL
     template_name = 'user/user_confirm_delete.html'
 
     @method_decorator(login_required)

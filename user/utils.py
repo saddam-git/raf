@@ -3,7 +3,7 @@ from django.contrib.auth.tokens import default_token_generator as token_generato
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
-from raf import settings
+from raf.settings import dev
 from django.core.mail import BadHeaderError,send_mail
 from smtplib import SMTPException
 import traceback
@@ -94,7 +94,7 @@ class ActivationMailFormMixin:
         mail_kwargs = {
             "subject":self.get_subject(**kwargs),
             "message":self.get_message(**kwargs),
-            "from_email":settings.DEFAULT_FROM_EMAIL,
+            "from_email":dev.DEFAULT_FROM_EMAIL,
             "recipient_list":[user.email],
         }
 
